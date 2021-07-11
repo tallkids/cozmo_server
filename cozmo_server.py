@@ -44,8 +44,8 @@ class RCApp(object):
         self.cli.set_head_angle(angle)
         time.sleep(0.5)
 
-        self.set_cozmo_face()
-        self.cli.load_anims("/home/pi/Cozmo/Android/obb/com.anki.cozmo/assets/cozmo_resources/assets/animations")
+#        self.set_cozmo_face()
+#        self.cli.load_anims("/home/pi/Cozmo/Android/obb/com.anki.cozmo/assets/cozmo_resources/assets/animations")
 
         return True
 
@@ -74,7 +74,7 @@ class RCApp(object):
         self.cli.add_handler(pycozmo.event.EvtNewRawCameraImage, handle_camera_image, one_shot=True)
         time.sleep(1.0)
 
-        res = subprocess.run(["raspistill", "-o", "camera2.jpg", "-rot", "270", "-w", "512", "-h", "360", "-t", "300"], stdout=subprocess.PIPE)
+        res = subprocess.run(["raspistill", "-o", "/var/www/html/cozmo/camera2.jpg", "-rot", "270", "-w", "512", "-h", "360", "-t", "300"], stdout=subprocess.PIPE)
 
         camera_t = threading.Thread(target = camera_thread)
         camera_t.start()
@@ -164,7 +164,7 @@ class RCApp(object):
                 self.cli.add_handler(pycozmo.event.EvtNewRawCameraImage, handle_camera_image, one_shot=True)
                 time.sleep(0.3)
             elif val == 'raspi':
-                res = subprocess.run(["raspistill", "-o", "camera2.jpg", "-rot", "270", "-w", "512", "-h", "360", "-t", "300"], stdout=subprocess.PIPE)
+                res = subprocess.run(["raspistill", "-o", "/var/www/html/cozmo/camera2.jpg", "-rot", "270", "-w", "512", "-h", "360", "-t", "300"], stdout=subprocess.PIPE)
 
         elif cmd == 'face':
             self.set_cozmo_face(val)

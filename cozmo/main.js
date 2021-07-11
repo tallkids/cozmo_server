@@ -7,7 +7,8 @@ var info;
 var flg_run = true;
 var main_loop_interval = 1000 / 30;
 var last_key = '';
-var cozmo_server = 'http://rp3-01.local:3141/';    // COZMO server URL
+//var cozmo_server = 'http://rp3-01.local:3141/';    // COZMO server URL
+var cozmo_server = 'http://rp3-01.local/cozmo_control/';    // COZMO server URL
 var cozmo_camera_interval = 1000 / 10;             // cozmo camera interval
 var flg_stop_camera = true;
 var cozmo_move_speed_def = 30;                     // defalut cozmo movement speed [0 - 100]
